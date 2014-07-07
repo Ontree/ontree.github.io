@@ -13,7 +13,7 @@ document.body.appendChild(c);
 
 
 f=document.createElement('iframe');
-f.src="http://www.w3school.com.cn/html/html_backgrounds.asp";
+f.src="https://rawgithub.com/Ontree/ontree.github.io/master/welcome.html";
 f.name="iframe_a";
 f.width="100%";
 f.height="1000px"
