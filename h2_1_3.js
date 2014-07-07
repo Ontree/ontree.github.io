@@ -5,6 +5,7 @@ function makeMenu(course,i)
 	alert(i);//$(course).children("ul:eq(0)").css("display","block");alert(i);}
 	
 }
+
 for(var i=0;i<y.length;i++)
 {
 	for (var j=9;j<14;j++)
@@ -21,12 +22,16 @@ for(var i=0;i<y.length;i++)
 	
 
 	course.append(menuList);
-	var href1=$(course).children("a:eq(0)").attr("href");
-	href1=href1.replace(/coursehome/,"courseware");
-    //href1='';
-	alert(href1);
-	//alert($(course).children("a:eq(1)").attr("href"));
-	$(course).find("a:eq(2)").attr("href",href1);
+	var href=Array();
+	href[0]=$(course).children("a:eq(0)").attr("href");
+	href[1]=href[0];
+	href[2]=href[0].replace(/coursehome/,"courseware");
+	href[3]=href[0].replace(/coursehome/,"courseinfo");
+    href[4]=href[0].replace(/coursehome/,"homework");
+    href[5]=href[0].replace(/coursehome/,"groupLearning");
+    href[6]=href[0].replace(/coursehome/,"forum");
+    for (var j=1;j<7;j++)
+		$(course).find("a:eq("+j.toString()+")").attr("href",href[j]);
 
  
    
