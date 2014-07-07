@@ -13,7 +13,7 @@
 }
 
 .menu li {
- float: left; width: 80px; background:#CCC;
+width: 80px; background:#CCC;
 }
 .menu li a:hover{
  background:#999;
@@ -23,7 +23,7 @@
  left: -999em; width: 180px; position: absolute;
 }
 .menu li ul li{
- width: 180px;
+width: 180px;
  background: #F6F6F6;
 }
 
