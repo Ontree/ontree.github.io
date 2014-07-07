@@ -57,11 +57,12 @@ width: 80px;
   right:0px;
   top:150px;
   z-index:999;
+  width:50%;
 
 }
 .center_module
 {
-	width:500px;
+	width:35%;
 }
 
 
