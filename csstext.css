@@ -50,5 +50,13 @@ width: 80px;
  left: auto;
 }
 
+.frame
+{
+
+  position:absolute;
+  left:100px;
+  top:150px;
+ 
+}
 
 
