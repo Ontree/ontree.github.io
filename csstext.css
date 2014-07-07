@@ -26,8 +26,6 @@ width: 80px; background:#CCC;
 width: 80px;
  background: #F6F6F6;
 }
-
-
 .menu li ul a{
  display: block; width: 165px;_width: 180px;height:auto; margin:0 auto;text-align:left; padding-left:15px;
 }
@@ -49,20 +47,20 @@ width: 80px;
 .menu li.sfhover ul {
  left: auto;
 }
-
 .frame
 {
 
   position:absolute;
   right:0px;
-  top:150px;
-  z-index:999;
-  width:50%;
+  top:110px;
+  z-index:998;
+  width:75%;
 
 }
 .center_module
 {
-	width:35%;
+	width:24%;
 }
+
 
 
