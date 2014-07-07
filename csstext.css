@@ -23,7 +23,7 @@
  left: -999em; width: 180px; position: absolute;
 }
 .menu li ul li{
- float: left; width: 180px;
+ width: 180px;
  background: #F6F6F6;
 }
 
