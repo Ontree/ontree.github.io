@@ -13,6 +13,7 @@ div{
 	overflow:hidden;
 	padding-top: 50px;
 	display: "table";
+
 }
 #seriesPreview:after{
 	clear:both;
@@ -26,9 +27,17 @@ div{
 .seriesPreviewItem{
 	width:100%;
 	margin-top:25px;
+	cursor: hand;
+	background-color: color:#BBB;
+	color: #888;
+	//width:100%;
+	//text-align:center;
+	text-decoration:none;
 }
-.seriesTitle p{
-	color:red;
+.seriesTitle{
+	border-left: 2px solid #DBDBDB;
+	border-bottom: 2px solid #DBDBDB;
+	border-right: 2px solid #DBDBDB;
 }
 
 img{

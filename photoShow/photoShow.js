@@ -52,7 +52,7 @@ function createPhoto(){
 	$('#start').click(function(){
 		$('#start').css("display","none");
 		$('#stop').css("display","block");
-		var time = 300;  
+		var time = 6000;  
 		var interval; 
 		interval = setInterval(fun,time);
 		function fun(){
