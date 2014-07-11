@@ -79,7 +79,7 @@ img{
 #mainShow{
 	z-index: -101;
 	position: absolute;
-	top:100px;
+	top:200px;
 	left:10%;
 	width:80%;
 	opacity: 0;
@@ -123,7 +123,7 @@ img{
 	width:50px !important;
 	height: 50px;
 	position:fixed;
-	top:100px;
+	top:200px;
 	left:10%;
 	opacity: 0.6;
 	cursor: hand;
@@ -136,7 +136,7 @@ img{
 	width:50px !important;
 	height: 50px;
 	position:fixed;
-	top:180px;
+	top:280px;
 	left:10%;
 	opacity: 0.6;
 	cursor: hand;
@@ -150,7 +150,7 @@ img{
 	width:50px !important;
 	height: 50px;
 	position:fixed;
-	top:180px;
+	top:280px;
 	left:10%;
 	opacity: 0.6;
 	cursor: hand;
