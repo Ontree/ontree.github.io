@@ -218,3 +218,18 @@ img{
 	color:#FFF;
 	font-weight:bold;
 }
+#more{
+	display:block;
+	width:10% !important;
+	height: 50px;
+	position:absolute;
+	bottom:0px;
+	left:45%;
+	opacity: 0.6;
+	cursor: hand;
+	z-index: 6;
+}
+#stop:hover{
+	opacity: 0.9;
+}
+}
