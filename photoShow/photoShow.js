@@ -142,14 +142,14 @@ $('#prePage').click(function(){
 
 function createSeries(){
 	for (var i=0;i<4;i++){
-		e1=$('.seriesPreviewColumn:eq(i)');
+		e1=$('.seriesPreviewColumn:eq('+i.toString()+')');
 		e2=$('<div class="seriesPreviewItem">');
 		e2.attr("id",(8+i).toString());
 		e3=$('<img>');
 		e3.attr("src",GObj.photoPreviewSrc[i]);
 		e4=$('<div class="seriesTitle">');
 		e5=$('<p>');
-		e5.text=GObj.seriesTitle[i];
+		e5.text(GObj.seriesTitle[i]);
 		e4.append(e5);
 		e2.append(e3);
 		e2.append(e4);
@@ -175,10 +175,10 @@ function loadGroupObj(st){
 	xmlhttp.send();
 }
 $('#more').click(function(){
-		$('#more').css("display","none");
-		loadGroupObj("more_"+(currentGroup+1).toString()+".json");
-    }
-});
+	$('#more').css("display","none");
+	loadGroupObj("more_"+(currentGroup+1).toString()+".json");
+})
+
 
 var strCookie=document.cookie; 
 var arrCookie=strCookie.split("; "); 
