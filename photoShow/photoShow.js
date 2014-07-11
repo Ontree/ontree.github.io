@@ -1,23 +1,24 @@
-var obj, current = 0;
+var obj, current = 1;
 
 function showPhoto(){
 	$('#mainPhoto').empty();
 	for (var i=0; i<obj.number;i++ ){
 		var p =$("<div>");
 		p.addClass("Photo");
-		if (i !=current){
-			p.css("display","none");
-		}
-		else{
-			p.css("display","block");
-		}
-		//p.attr("id",i.toString());
 		var im=$("<img>");
 		im.attr("src",obj.PhotoSrc[i]);
 		p.append(im);
 		$('#mainPhoto').append(p);
+		var pp=$('#mainPhoto div.Photo:eq('+i.toString()+')');
+		if (i !=current){
+			pp.addClass("below");
+		}
+		else{
+			pp.addClass("over");
+		}
 	}
 }
+
 function loadPhoto(st){
 	var xmlhttp, response;
 	if (window.XMLHttpRequest){
@@ -38,14 +39,13 @@ function loadPhoto(st){
 
 $('.seriesPreviewItem').click((function(){
 	return function(){
-		$('.shade').css("display", "block");
 		$('.shade').attr("lang", "visual");
-		$('#mainShow').css("display","block");
-		loadPhoto("series_"+this.id+".json");
+		$('#mainShow').attr("lang", "visual");;
+		loadPhoto("series_"+this.id+".json");		
 	};
 })())
 
-$('#mainShow').click(function(){console.log(obj.number,current);
+$('#mainShow').click(function(){
 	if (current!=obj.number-1){
 		current++;
 	}
