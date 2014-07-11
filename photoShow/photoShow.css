@@ -107,6 +107,8 @@ img{
 	color: #888;
 	width:100%;
 	text-align:center;
+	text-decoration:none;
+	color:#FFF;font-weight:bold;
 }
 #prePage{
 	border-top: 2px solid #DBDBDB;
@@ -124,20 +126,4 @@ img{
 }
 #nextPage:hover{
 	background-color: #DBDBDB;
-	color:#FFF;font-weight:bold;
 }
-#turnPage  a {
-   text-align:center;
-   margin:10px auto;
-   width:100%;
-}
-
-#turnPage  a:link  {
- color:#888; text-decoration:none;
-}
-#turnPage  a:visited  {
- color:#888;text-decoration:none;
-}
-#turnPage  a:hover  {
- color:#FFF;text-decoration:none;font-weight:bold;
-}	
