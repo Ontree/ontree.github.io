@@ -89,6 +89,7 @@ img{
 	position:fixed;
 	top:100px;
 	left:42%;
+	cursor:e-resize;
 }
 #prePhoto{
 	width:32%;
@@ -97,6 +98,7 @@ img{
 	position:fixed;
 	top:100px;
 	left:10%;
+	cursor: w-resize;
 }
 
 #reviewBar{
