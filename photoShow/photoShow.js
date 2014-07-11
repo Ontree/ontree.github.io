@@ -1,4 +1,5 @@
 var obj, currentPhoto = 0, currentPage=0, perPage=5;
+var time = 6000, interval; 
 
 function showPhoto(){
 	for (var i=0; i<obj.photoNumber;i++ ){
@@ -22,7 +23,6 @@ function createPhoto(){
 	$('#mainPhoto').append($('<img src="close.png" id="close">'));
 	$('#mainPhoto').append($('<img src="start.png" id="start">'));
 	$('#mainPhoto').append($('<img src="stop.png" id="stop">'));
-	//$('#mainPhoto').append($('<img src="stop.png" id="stop">'));
 	$('#nextPhoto').click(function(){
 		if (currentPhoto!=obj.photoNumber-1){
 			currentPhoto++;
@@ -47,13 +47,11 @@ function createPhoto(){
 		$('#mainPhoto').empty();
 		$('.shade').attr("lang", "");
 		$('#mainShow').attr("lang", "");
-		window.clearInterval();
+		clearInterval(interval);
 	});
 	$('#start').click(function(){
 		$('#start').css("display","none");
 		$('#stop').css("display","block");
-		var time = 6000;  
-		var interval; 
 		interval = setInterval(fun,time);
 		function fun(){
         	if (currentPhoto!=obj.photoNumber-1){
@@ -68,7 +66,7 @@ function createPhoto(){
 	$('#stop').click(function(){
 		$('#start').css("display","block");
 		$('#stop').css("display","none");
-		window.clearInterval();
+		clearInterval(interval);
 	});
 	for (var i=0; i<obj.photoNumber;i++ ){
 		var p =$("<div>");

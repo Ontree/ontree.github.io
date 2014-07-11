@@ -9,9 +9,11 @@ div{
 }
 #seriesPreview{
 	margin:0 auto;
-	width:800px;
+	width:100%;
 	overflow:hidden;
 	padding-top: 50px;
+	padding-left: 50px;
+	padding-right: 50px;
 	display: "table";
 
 }
@@ -19,7 +21,7 @@ div{
 	clear:both;
 }
 .seriesPreviewColumn{
-	width:350px;
+	width:20%;
 	float:left;
 	margin-left: 25px;
 	margin-right: 25px;
