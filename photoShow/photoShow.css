@@ -71,7 +71,7 @@ img{
 #mainPhoto{
 	display:inline;
 	overflow: hidden;
-	width:800px;
+	width:80%;
 }
 .photo{
 	display: none;
@@ -80,7 +80,7 @@ img{
 #reviewBar{
 	display: inline;
 	overflow: hidden;
-	width:150px;
+	width:20%;
 }
 
 #reviewBar #ul{
