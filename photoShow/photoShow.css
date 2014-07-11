@@ -47,8 +47,11 @@ img{
 
 .shade:lang(visual){
 	display: block;
+	//opacity: 0.772;
+}
+.shade:hover{
+	display: block;
 	opacity: 0.772;
-	transition: opacity 3s;
 }
 
 #mainShow{
