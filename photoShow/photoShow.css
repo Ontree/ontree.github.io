@@ -229,7 +229,7 @@ img{
 	cursor: hand;
 	z-index: 6;
 }
-#stop:hover{
+#more:hover{
 	opacity: 0.9;
 }
-}
+
