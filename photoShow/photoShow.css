@@ -1,5 +1,5 @@
 body{
-	//background-color: black;
+	background-color: #888;
 	font-family: "Microsoft Yahei";
 	overflow:hidden;
 	margin:0;
@@ -33,11 +33,17 @@ div{
 	//width:100%;
 	//text-align:center;
 	text-decoration:none;
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,.3)
 }
 .seriesTitle{
 	border-left: 2px solid #DBDBDB;
 	border-bottom: 2px solid #DBDBDB;
 	border-right: 2px solid #DBDBDB;
+	padding-top: 20px;
+}
+
+.seriesTitle p{
+margin-top: 0px;
 }
 
 img{
