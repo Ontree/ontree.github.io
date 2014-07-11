@@ -71,7 +71,7 @@ $('.seriesPreviewItem').click((function(){
 	};
 })())
 
-$('.Photo').click(function(){
+$('#nextPhoto').click(function(){
 	if (currentPhoto!=obj.photoNumber-1){
 		currentPhoto++;
 	}
@@ -92,4 +92,5 @@ $('#prePage').click(function(){
 		createReview();
 	}
 })
+
 
