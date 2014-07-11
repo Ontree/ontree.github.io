@@ -1,4 +1,3 @@
-alert(1);
 var obj, currentPhoto = 0, currentPage=0, perPage=5;
 var time = 4500, interval; 
 
