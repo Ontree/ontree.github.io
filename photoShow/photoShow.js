@@ -1,6 +1,18 @@
 var obj, current = 1;
 
 function showPhoto(){
+	for (var i=0; i<obj.number;i++ ){
+		var p=$('#mainPhoto div.Photo:eq('+i.toString()+')');
+		if (i !=current){
+			p.fadeOut();
+		}
+		else{
+			p.fadeIn();
+		}
+	}
+}
+
+function createPhoto(){
 	$('#mainPhoto').empty();
 	for (var i=0; i<obj.number;i++ ){
 		var p =$("<div>");
@@ -9,14 +21,8 @@ function showPhoto(){
 		im.attr("src",obj.PhotoSrc[i]);
 		p.append(im);
 		$('#mainPhoto').append(p);
-		var pp=$('#mainPhoto div.Photo:eq('+i.toString()+')');
-		if (i !=current){
-			pp.addClass("below");
-		}
-		else{
-			pp.addClass("over");
-		}
 	}
+	showPhoto();
 }
 
 function loadPhoto(st){
@@ -30,7 +36,7 @@ function loadPhoto(st){
 	xmlhttp.onreadystatechange=function(){
   		if (xmlhttp.readyState==4 && xmlhttp.status==200){
     		obj=eval("("+xmlhttp.responseText+")");
-    		showPhoto();
+    		createPhoto();
     	}
   	}
 	xmlhttp.open("GET",st,true);
