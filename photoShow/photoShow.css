@@ -83,6 +83,7 @@ img{
 #reviewBar{
 	overflow: hidden;
 	width:20%;
+	background-color: #F7F7F7;
 }
 
 #reviewBar ul{
@@ -90,4 +91,6 @@ img{
 }
 #reviewBar li{
 	width: 100%;
+	color:#888;
+	border: 1px solid #F2F2F2;
 }
