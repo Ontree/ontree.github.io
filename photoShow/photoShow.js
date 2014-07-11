@@ -139,7 +139,7 @@ $('#prePage').click(function(){
 		createReview();
 	}
 })
-
+var e1,e2,e3,e4,e5;
 function createSeries(){
 	for (var i=0;i;i++){
 		e1=$('.seriesPreviewColumn:eq('+i.toString()+')');
