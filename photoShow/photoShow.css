@@ -62,11 +62,15 @@ img{
 	transition: opacity 2s;
 }
 #mainShow:lang(visual){
-	//display: block;
+	display: inline;
 	z-index: 2;
 	opacity: 1;
 }
 .photo{
 	display: none;
 }
+#reviewBar{
+	display: inline;
+}
+
 
