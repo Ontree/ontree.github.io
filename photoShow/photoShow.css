@@ -57,10 +57,10 @@ img{
 
 #mainShow{
 	z-index: -101;
-	position: absolute;
+	position: fixed;
 	top:100px;
 	margin:0 auto;
-	width:1000px;
+	width:80%;
 	opacity: 0;
 	transition: opacity 2s;
 }
@@ -75,6 +75,7 @@ img{
 }
 .photo{
 	display: none;
+	position: fixed;
 }
 
 #reviewBar{
