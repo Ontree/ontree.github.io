@@ -1,7 +1,7 @@
 body{
 	background-color: #DDD;
 	font-family: "Microsoft Yahei";
-	overflow:hidden;
+	//overflow:hidden;
 	margin:0;
 }
 div{
@@ -10,7 +10,7 @@ div{
 #seriesPreview{
 	margin:0 auto;
 	width:100%;
-	overflow:hidden;
+	//overflow:hidden;
 	padding-top: 50px;
 	padding-left: 50px;
 	padding-right: 50px;
@@ -90,7 +90,7 @@ img{
 	opacity: 1;
 }
 #mainPhoto{
-	overflow: hidden;
+	//overflow: hidden;
 	float: left;
 	width:80%;
 	height:1px;

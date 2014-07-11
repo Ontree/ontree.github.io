@@ -1,5 +1,5 @@
 var obj, currentPhoto = 0, currentPage=0, perPage=5;
-var time = 6000, interval; 
+var time = 4500, interval; 
 
 function showPhoto(){
 	for (var i=0; i<obj.photoNumber;i++ ){
