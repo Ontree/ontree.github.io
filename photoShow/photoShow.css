@@ -34,7 +34,7 @@ img{
 	width:100%;
 }
 .shade{
-	//display: none;
+	display: none;
 	opacity: 0;
 	position:absolute;
 	top:0;
