@@ -71,13 +71,14 @@ img{
 #mainPhoto{
 	overflow: hidden;
 	float: left;
-	width:64%;
+	width:80%;
 	height:1px;
 }
 .photo{
 	display: none;
 	position: fixed;
 	left:10%;
+	width:64%;
 }
 
 #reviewBar{
