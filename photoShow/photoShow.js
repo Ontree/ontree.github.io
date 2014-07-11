@@ -1,12 +1,15 @@
-var obj, current = 1;
+var obj, currentPhoto = 0;
 
 function showPhoto(){
-	for (var i=0; i<obj.number;i++ ){
+	for (var i=0; i<obj.photoNumber;i++ ){
 		var p=$('#mainPhoto div.Photo:eq('+i.toString()+')');
-		if (i !=current){
+		if (i !=currentPhoto){
 			p.fadeOut();
 		}
-		else{
+	}
+	for (var i=0; i<obj.photoNumber;i++ ){
+		var p=$('#mainPhoto div.Photo:eq('+i.toString()+')');
+		if (i ==currentPhoto){
 			p.fadeIn();
 		}
 	}
@@ -14,18 +17,27 @@ function showPhoto(){
 
 function createPhoto(){
 	$('#mainPhoto').empty();
-	for (var i=0; i<obj.number;i++ ){
+	for (var i=0; i<obj.photoNumber;i++ ){
 		var p =$("<div>");
 		p.addClass("Photo");
 		var im=$("<img>");
-		im.attr("src",obj.PhotoSrc[i]);
+		im.attr("src",obj.photoSrc[i]);
 		p.append(im);
 		$('#mainPhoto').append(p);
 	}
 	showPhoto();
 }
 
-function loadPhoto(st){
+function createReview(){
+	$('#reviewlist').empty();
+	for (var i=0; i<obj.reviewNumber;i++ ){
+		var p =$("<li>");
+		p.text(obj.review[i]);
+		$('#reviewlist').append(p);
+	}
+}
+
+function loadObj(st){
 	var xmlhttp, response;
 	if (window.XMLHttpRequest){
   		xmlhttp=new XMLHttpRequest();
@@ -37,6 +49,7 @@ function loadPhoto(st){
   		if (xmlhttp.readyState==4 && xmlhttp.status==200){
     		obj=eval("("+xmlhttp.responseText+")");
     		createPhoto();
+    		createReview();
     	}
   	}
 	xmlhttp.open("GET",st,true);
@@ -47,16 +60,16 @@ $('.seriesPreviewItem').click((function(){
 	return function(){
 		$('.shade').attr("lang", "visual");
 		$('#mainShow').attr("lang", "visual");;
-		loadPhoto("series_"+this.id+".json");		
+		loadObj("series_"+this.id+".json");		
 	};
 })())
 
 $('#mainShow').click(function(){
-	if (current!=obj.number-1){
-		current++;
+	if (currentPhoto!=obj.photoNumber-1){
+		currentPhoto++;
 	}
 	else{
-		current=0;
+		currentPhoto=0;
 	}
 	showPhoto();
 })

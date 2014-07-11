@@ -34,7 +34,7 @@ img{
 	width:100%;
 }
 #mainPhoto img{
-	width:800px;
+	width:100%;
 }
 .shade{
 	//display: none;
@@ -71,7 +71,7 @@ img{
 #mainPhoto{
 	overflow: hidden;
 	float: left;
-	width:80%;
+	width:64%;
 	height:1px;
 }
 .photo{
@@ -84,6 +84,7 @@ img{
 	overflow: hidden;
 	width:20%;
 	background-color: #F7F7F7;
+	margin-right: 0;
 }
 
 #reviewBar ul{
