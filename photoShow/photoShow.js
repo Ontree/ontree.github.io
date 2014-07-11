@@ -1,4 +1,4 @@
-var obj, currentPhoto = 0, currentPage=0;
+var obj, currentPhoto = 0, currentPage=0, perPage=3;
 
 function showPhoto(){
 	for (var i=0; i<obj.photoNumber;i++ ){
@@ -30,9 +30,9 @@ function createPhoto(){
 
 function createReview(){
 	$('#reviewlist').empty();
-	var j=3*currentPage;
-	var k=j+3;
-	if (k<obj.reviewNumber)
+	var j=perPage*currentPage;
+	var k=j+perPage;
+	if (k>obj.reviewNumber)
 		k=obj.reviewNumber
 	for (var i=j; i<k;i++ ){
 		var p =$("<li>");
@@ -71,7 +71,7 @@ $('.seriesPreviewItem').click((function(){
 	};
 })())
 
-$('#mainShow').click(function(){
+$('.Photo').click(function(){
 	if (currentPhoto!=obj.photoNumber-1){
 		currentPhoto++;
 	}
@@ -79,5 +79,11 @@ $('#mainShow').click(function(){
 		currentPhoto=0;
 	}
 	showPhoto();
+})
+$('#nextPage').click(function(){
+	if (currentPage!=(obj.pageNumber-1)/perPage){
+		currentPhoto++;
+		createReview()
+	}
 })
 

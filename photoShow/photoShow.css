@@ -108,7 +108,6 @@ img{
 	width:100%;
 	text-align:center;
 	text-decoration:none;
-	color:#FFF;font-weight:bold;
 }
 #prePage{
 	border-top: 2px solid #DBDBDB;
@@ -123,7 +122,11 @@ img{
 }
 #prePage:hover{
 	background-color: #DBDBDB;
+	color:#FFF;
+	font-weight:bold;
 }
 #nextPage:hover{
 	background-color: #DBDBDB;
+	color:#FFF;
+	font-weight:bold;
 }
