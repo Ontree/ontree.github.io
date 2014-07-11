@@ -69,7 +69,8 @@ img{
 	opacity: 1;
 }
 #mainPhoto{
-	display: inline;
+	display:inline;
+	overflow: hidden;
 	width:800px;
 }
 .photo{
@@ -78,7 +79,10 @@ img{
 
 #reviewBar{
 	display: inline;
+	overflow: hidden;
 	width:150px;
 }
 
-
+#reviewBar #ul{
+	width: 100%;
+}
