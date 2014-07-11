@@ -198,7 +198,7 @@ img{
 	width:49.8%;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	cursor: "icon.png";
+	-user-select:none;
 }
 #nextPage{
 	border-top: 2px solid #DBDBDB;
@@ -207,6 +207,7 @@ img{
 	float:right;
 	padding-top: 10px;
 	padding-bottom: 10px;
+	-user-select:none;
 }
 #prePage:hover{
 	background-color: #DBDBDB;
