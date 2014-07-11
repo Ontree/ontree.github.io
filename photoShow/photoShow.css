@@ -100,7 +100,12 @@ img{
 	left:10%;
 	cursor: w-resize;
 }
-
+#close{
+	position:fixed;
+	top:100px;
+	left:10%;
+	opacity: 0.7;
+}
 #reviewBar{
 	overflow: hidden;
 	width:20%;

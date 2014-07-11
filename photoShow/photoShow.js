@@ -19,6 +19,7 @@ function createPhoto(){
 	$('#mainPhoto').empty();
 	$('#mainPhoto').append($('<div id="nextPhoto"></div>'));
 	$('#mainPhoto').append($('<div id="prePhoto"></div>'));
+	$('#mainPhoto').append($('<img src="close.png" id="close">');
 	$('#nextPhoto').click(function(){
 		if (currentPhoto!=obj.photoNumber-1){
 			currentPhoto++;
