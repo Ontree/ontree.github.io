@@ -30,10 +30,8 @@ div{
 .seriesTitle p{
 	color:red;
 }
-img{
-	width:100%;
-}
-#mainPhoto img{
+
+.Photo img{
 	width:100%;
 }
 .shade{
