@@ -79,6 +79,7 @@ img{
 	position: fixed;
 	left:10%;
 	width:64%;
+	cursor: "icon.png";
 }
 
 #reviewBar{
@@ -87,6 +88,7 @@ img{
 	background-color: #F7F7F7;
 	margin-right: 0;
 	height:350px;
+	position:relative;
 }
 
 #reviewBar ul{
@@ -111,6 +113,7 @@ img{
 	text-align:center;
 	text-decoration:none;
 	cursor: hand;
+	position:absolute;
 }
 #prePage{
 	border-top: 2px solid #DBDBDB;
@@ -118,6 +121,7 @@ img{
 	width:49.8%;
 	padding-top: 10px;
 	padding-bottom: 10px;
+	cursor: "icon.png";
 }
 #nextPage{
 	border-top: 2px solid #DBDBDB;
