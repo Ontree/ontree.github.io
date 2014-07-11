@@ -85,6 +85,9 @@ img{
 	width:20%;
 }
 
-#reviewBar #ul{
+#reviewBar .ul{
+	width: 100%;
+}
+#reviewBar .li{
 	width: 100%;
 }
