@@ -124,6 +124,20 @@ img{
 #start:hover{
 	opacity: 0.9;
 }
+#stop{
+	display:none;
+	width:50px !important;
+	height: 50px;
+	position:fixed;
+	top:180px;
+	left:10%;
+	opacity: 0.6;
+	cursor: hand;
+	z-index: 6;
+}
+#stop:hover{
+	opacity: 0.9;
+}
 #reviewBar{
 	overflow: hidden;
 	width:20%;

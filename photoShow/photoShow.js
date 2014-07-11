@@ -21,6 +21,7 @@ function createPhoto(){
 	$('#mainPhoto').append($('<div id="prePhoto"></div>'));
 	$('#mainPhoto').append($('<img src="close.png" id="close">'));
 	$('#mainPhoto').append($('<img src="start.png" id="start">'));
+	//$('#mainPhoto').append($('<img src="stop.png" id="stop">'));
 	$('#nextPhoto').click(function(){
 		if (currentPhoto!=obj.photoNumber-1){
 			currentPhoto++;
@@ -45,6 +46,21 @@ function createPhoto(){
 		$('#mainPhoto').empty();
 		$('.shade').attr("lang", "");
 		$('#mainShow').attr("lang", "");
+	});
+	$('#start').click(function(){
+		$('#start').css("display","none");
+		var time = 300;  
+		var interval; 
+		interval = setInterval(fun,time);
+		function fun(){
+        	if (currentPhoto!=obj.photoNumber-1){
+				currentPhoto++;
+			}
+			else{
+				currentPhoto=0;
+			}
+			showPhoto();
+    	}
 	});
 	for (var i=0; i<obj.photoNumber;i++ ){
 		var p =$("<div>");
