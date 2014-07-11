@@ -90,7 +90,7 @@ function createReview(){
 		k=obj.reviewNumber
 	for (var i=j; i<k;i++ ){
 		var p =$("<li>");
-		p.text(obj.review[i]);
+		p.text(obj.reviewer[i]+":  "+obj.review[i]);
 		var t=$("<p>");
 		t.text(obj.reviewTime[i]);
 		p.append(t);
@@ -141,7 +141,7 @@ $('#prePage').click(function(){
 })
 
 function createSeries(){
-	for (var i=0;i<4;i++){
+	for (var i=0;i;i++){
 		e1=$('.seriesPreviewColumn:eq('+i.toString()+')');
 		e2=$('<div class="seriesPreviewItem">');
 		e2.attr("id",(9+i).toString());
