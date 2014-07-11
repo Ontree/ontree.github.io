@@ -44,6 +44,12 @@ img{
 	background-color: black;
 	transition: opacity 3s;
 }
+
+.shade:lang(visual){
+	display: block;
+	opacity: 0.772;
+}
+
 #mainShow{
 	display: none;
 	position: absolute;

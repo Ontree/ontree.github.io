@@ -1,12 +1,15 @@
-var obj;
+var obj, current = 0;
 
 function showPhoto(){
 	$('#mainPhoto').empty();
-	for (var i=1; i<=obj.number;i++ ){
+	for (var i=0; i<obj.number;i++ ){
 		var p =$("<div>");
 		p.addClass("Photo");
-		if (i !=1){
+		if (i !=current){
 			p.css("display","none");
+		}
+		else{
+			p.css("display","block");
 		}
 		//p.attr("id",i.toString());
 		var im=$("<img>");
@@ -35,9 +38,19 @@ function loadPhoto(st){
 
 $('.seriesPreviewItem').click((function(){
 	return function(){
-		$('.shade').css("display","block");
-		$('.shade').css('opacity',0.772);
+		$('.shade').attr("lang", "visual");
 		$('#mainShow').css("display","block");
-		loadPhoto("series_1.json");
+		loadPhoto("series_"+this.id+".json");
 	};
 })())
+
+$('#mainShow').click(function(){console.log(obj.number,current);
+	if (current!=obj.number-1){
+		current++;
+	}
+	else{
+		current=0;
+	}
+	showPhoto();
+})
+
