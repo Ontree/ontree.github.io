@@ -31,6 +31,9 @@ div{
 	color:red;
 }
 img{
+	width:100%;
+}
+#mainPhoto img{
 	width:800px;
 }
 .shade{
