@@ -13,6 +13,7 @@ function showPhoto(){
 		var p=$('#mainPhoto div.Photo:eq('+i.toString()+')');
 		if (i ==currentPhoto){
 			p.fadeIn();
+			document.cookie="id2="+i.toString(); 
 		}
 	}
 }
@@ -49,6 +50,8 @@ function createPhoto(){
 		$('.shade').attr("lang", "");
 		$('#mainShow').attr("lang", "");
 		clearInterval(interval);
+		document.cookie="id1=0"; 
+		document.cookie="id2=0"; 
 	});
 	$('#start').click(function(){
 		$('#start').css("display","none");
@@ -119,6 +122,7 @@ $('.seriesPreviewItem').click((function(){
 	return function(){
 		$('.shade').attr("lang", "visual");
 		$('#mainShow').attr("lang", "visual");
+		document.cookie="id1="+this.id; 
 		loadObj("series_"+this.id+".json");		
 	};
 })())
@@ -136,5 +140,29 @@ $('#prePage').click(function(){
 		createReview();
 	}
 })
+
+//设置两个cookie 
+
+//获取cookie字符串 
+var strCookie=document.cookie; 
+//将多cookie切割为多个名/值对 
+var arrCookie=strCookie.split("; "); 
+var id1; 
+//遍历cookie数组，处理每个cookie对 
+for(var i=0; i<arrCookie.length; i++){ 
+	var arr=arrCookie[i].split("="); 
+	if("id1"==arr[0]){ 
+		id1=arr[1]; 
+	}
+	else{
+		id2=arr[1];
+	}
+}  
+if (id1 !="0")
+{
+	$('.shade').attr("lang", "visual");
+	$('#mainShow').attr("lang", "visual");
+	loadObj("series_"+id1+".json");		
+}
 
 
