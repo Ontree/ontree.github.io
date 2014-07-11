@@ -19,7 +19,8 @@ function createPhoto(){
 	$('#mainPhoto').empty();
 	$('#mainPhoto').append($('<div id="nextPhoto"></div>'));
 	$('#mainPhoto').append($('<div id="prePhoto"></div>'));
-	$('#mainPhoto').append($('<img src="close.png" id="close">');
+	$('#mainPhoto').append($('<img src="close.png" id="close">'));
+	$('#mainPhoto').append($('<img src="start.png" id="start">'));
 	$('#nextPhoto').click(function(){
 		if (currentPhoto!=obj.photoNumber-1){
 			currentPhoto++;
@@ -28,7 +29,7 @@ function createPhoto(){
 			currentPhoto=0;
 		}
 		showPhoto();
-	})
+	});
 	$('#prePhoto').click(function(){
 		if (currentPhoto!=0){
 			currentPhoto--;
@@ -37,7 +38,14 @@ function createPhoto(){
 			currentPhoto=obj.photoNumber-1;
 		}
 		showPhoto();
-	})
+	});
+	$('#close').click(function(){
+		currentPhoto = 0;
+		currentPage= 0;
+		$('#mainPhoto').empty();
+		$('.shade').attr("lang", "");
+		$('#mainShow').attr("lang", "");
+	});
 	for (var i=0; i<obj.photoNumber;i++ ){
 		var p =$("<div>");
 		p.addClass("Photo");
@@ -87,7 +95,7 @@ function loadObj(st){
 $('.seriesPreviewItem').click((function(){
 	return function(){
 		$('.shade').attr("lang", "visual");
-		$('#mainShow').attr("lang", "visual");;
+		$('#mainShow').attr("lang", "visual");
 		loadObj("series_"+this.id+".json");		
 	};
 })())

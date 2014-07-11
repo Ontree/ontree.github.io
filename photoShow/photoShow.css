@@ -44,7 +44,7 @@ img{
 	width: 100%;
 	height: 100%;
 	background-color: black;
-	transition: opacity 2s;
+	transition: opacity 1s;
 }
 
 .shade:lang(visual){
@@ -60,7 +60,7 @@ img{
 	left:10%;
 	width:80%;
 	opacity: 0;
-	transition: opacity 2s;
+	transition: opacity 1s;
 }
 #mainShow:lang(visual){
 	z-index: 2;
@@ -109,6 +109,19 @@ img{
 	z-index: 6;
 }
 #close:hover{
+	opacity: 0.9;
+}
+#start{
+	width:50px !important;
+	height: 50px;
+	position:fixed;
+	top:180px;
+	left:10%;
+	opacity: 0.6;
+	cursor: hand;
+	z-index: 6;
+}
+#start:hover{
 	opacity: 0.9;
 }
 #reviewBar{
