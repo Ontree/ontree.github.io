@@ -154,6 +154,14 @@ function createSeries(){
 		e2.append(e3);
 		e2.append(e4);
 		e1.append(e2);
+		$('.seriesPreviewItem').click((function(){
+			return function(){
+				$('.shade').attr("lang", "visual");
+				$('#mainShow').attr("lang", "visual");
+				document.cookie="id1="+this.id; 
+				loadObj("series_"+this.id+".json");		
+			};
+		})())
 	}
 
 }
