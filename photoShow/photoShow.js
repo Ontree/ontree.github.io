@@ -146,7 +146,7 @@ $('#prePage').click(function(){
 var strCookie=document.cookie; 
 //将多cookie切割为多个名/值对 
 var arrCookie=strCookie.split("; "); 
-var id1; 
+var id1=""; 
 //遍历cookie数组，处理每个cookie对 
 for(var i=0; i<arrCookie.length; i++){ 
 	var arr=arrCookie[i].split("="); 
@@ -157,7 +157,7 @@ for(var i=0; i<arrCookie.length; i++){
 		id2=arr[1];
 	}
 }  
-if ((id1 !="0")&&(id1))
+if ((id1 !="0")&&(id1!=""))
 {
 	$('.shade').attr("lang", "visual");
 	$('#mainShow').attr("lang", "visual");
