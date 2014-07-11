@@ -141,7 +141,7 @@ $('#prePage').click(function(){
 })
 var e1,e2,e3,e4,e5;
 function createSeries(){
-	for (var i=0;i;i++){
+	for (var i=0;i<4;i++){
 		e1=$('.seriesPreviewColumn:eq('+i.toString()+')');
 		e2=$('<div class="seriesPreviewItem">');
 		e2.attr("id",(9+i).toString());
