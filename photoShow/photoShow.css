@@ -59,7 +59,7 @@ img{
 	z-index: -101;
 	position: fixed;
 	top:100px;
-	margin:0 auto;
+	left:10%;
 	width:80%;
 	opacity: 0;
 	transition: opacity 2s;
@@ -72,10 +72,12 @@ img{
 	overflow: hidden;
 	float: left;
 	width:80%;
+	height:1px;
 }
 .photo{
 	display: none;
 	position: fixed;
+	left:10%;
 }
 
 #reviewBar{
