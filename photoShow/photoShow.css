@@ -96,3 +96,6 @@ img{
 	color:#888;
 	border: 1px solid #F2F2F2;
 }
+#reviewBar li p{
+	text-align: right;
+}

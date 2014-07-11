@@ -33,6 +33,9 @@ function createReview(){
 	for (var i=0; i<obj.reviewNumber;i++ ){
 		var p =$("<li>");
 		p.text(obj.review[i]);
+		var t=$("<p>");
+		t.text(obj.reviewTime[i]);
+		p.append(t);
 		$('#reviewlist').append(p);
 	}
 }
