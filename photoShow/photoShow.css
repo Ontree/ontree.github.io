@@ -82,6 +82,23 @@ img{
 	cursor: "icon.png";
 }
 
+#nextPhoto{
+	width:32%;
+	height:700px;
+	z-index:5;
+	position:fixed;
+	top:100px;
+	left:42%;
+}
+#prePhoto{
+	width:32%;
+	height:700px;
+	z-index:5;
+	position:fixed;
+	top:100px;
+	left:10%;
+}
+
 #reviewBar{
 	overflow: hidden;
 	width:20%;

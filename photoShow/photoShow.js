@@ -17,6 +17,8 @@ function showPhoto(){
 
 function createPhoto(){
 	$('#mainPhoto').empty();
+	$('<div id="nextPhoto"></div>');
+	$('<div id="prePhoto"></div>');
 	for (var i=0; i<obj.photoNumber;i++ ){
 		var p =$("<div>");
 		p.addClass("Photo");
@@ -77,6 +79,15 @@ $('#nextPhoto').click(function(){
 	}
 	else{
 		currentPhoto=0;
+	}
+	showPhoto();
+})
+$('#prePhoto').click(function(){
+	if (currentPhoto!=0){
+		currentPhoto--;
+	}
+	else{
+		currentPhoto=obj.photoNumber-1;
 	}
 	showPhoto();
 })
