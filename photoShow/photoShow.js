@@ -1,4 +1,4 @@
-var obj, currentPhoto = 0, currentPage=0, perPage=5;
+var obj, currentPhoto = 0, currentPage=0, perPage=5, currentGroup=0,GObj;
 var time = 4500, interval; 
 
 function showPhoto(){
@@ -140,14 +140,49 @@ $('#prePage').click(function(){
 	}
 })
 
-//设置两个cookie 
+function createSeries(){
+	for (var i=0;i<4;i++){
+		e1=$('.seriesPreviewColumn:eq(i)');
+		e2=$('<div class="seriesPreviewItem">');
+		e2.attr("id",(8+i).toString());
+		e3=$('<img>');
+		e3.attr("src",GObj.photoPreviewSrc[i]);
+		e4=$('<div class="seriesTitle">');
+		e5=$('<p>');
+		e5.text=GObj.seriesTitle[i];
+		e4.append(e5);
+		e2.append(e3);
+		e2.append(e4);
+		e1.append(e2);
+	}
 
-//获取cookie字符串 
+}
+function loadGroupObj(st){
+	var xmlhttp, response;
+	if (window.XMLHttpRequest){
+  		xmlhttp=new XMLHttpRequest();
+  	}
+	else{
+  		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  	}
+	xmlhttp.onreadystatechange=function(){
+  		if (xmlhttp.readyState==4 && xmlhttp.status==200){
+    		GObj=eval("("+xmlhttp.responseText+")");
+    		createSeries();
+    	}
+  	}
+	xmlhttp.open("GET",st,true);
+	xmlhttp.send();
+}
+$('#more').click(function(){
+		$('#more').css("display","none");
+		loadGroupObj("more_"+(currentGroup+1).toString()+".json");
+    }
+});
+
 var strCookie=document.cookie; 
-//将多cookie切割为多个名/值对 
 var arrCookie=strCookie.split("; "); 
 var id1=""; 
-//遍历cookie数组，处理每个cookie对 
 for(var i=0; i<arrCookie.length; i++){ 
 	var arr=arrCookie[i].split("="); 
 	if("id1"==arr[0]){ 
