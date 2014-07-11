@@ -1,4 +1,4 @@
-var obj, currentPhoto = 0, currentPage=0, perPage=3;
+var obj, currentPhoto = 0, currentPage=0, perPage=5;
 
 function showPhoto(){
 	for (var i=0; i<obj.photoNumber;i++ ){
@@ -81,9 +81,15 @@ $('.Photo').click(function(){
 	showPhoto();
 })
 $('#nextPage').click(function(){
-	if (currentPage!=(obj.pageNumber-1)/perPage){
-		currentPhoto++;
-		createReview()
+	if (currentPage!=Math.floor((obj.reviewNumber-1)/perPage)){
+		currentPage++;
+		createReview();
+	}
+})
+$('#prePage').click(function(){
+	if (currentPage!=0){
+		currentPage--;
+		createReview();
 	}
 })
 
