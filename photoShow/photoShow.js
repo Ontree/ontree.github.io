@@ -38,6 +38,7 @@ function loadPhoto(st){
 
 $('.seriesPreviewItem').click((function(){
 	return function(){
+		$('.shade').css("display", "block");
 		$('.shade').attr("lang", "visual");
 		$('#mainShow').css("display","block");
 		loadPhoto("series_"+this.id+".json");
