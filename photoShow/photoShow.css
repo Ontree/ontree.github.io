@@ -64,5 +64,17 @@ img{
 #mainShow:lang(visual){
 	//display: block;
 	z-index: 2;
-	opacity: 0.9;
+	opacity: 1;
+}
+.photo{
+	position:fixed;
+}
+.below{
+	z-index:-1;
+	opacity: 0;
+	transition: opacity 2s;
+}
+.over{
+	z-index: 3;
+	opacity: 1;
 }
