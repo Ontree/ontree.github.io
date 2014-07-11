@@ -1,4 +1,4 @@
-var obj, currentPhoto = 0;
+var obj, currentPhoto = 0, currentPage=0;
 
 function showPhoto(){
 	for (var i=0; i<obj.photoNumber;i++ ){
@@ -30,7 +30,11 @@ function createPhoto(){
 
 function createReview(){
 	$('#reviewlist').empty();
-	for (var i=0; i<obj.reviewNumber;i++ ){
+	var j=3*currentPage;
+	var k=j+3;
+	if (k<obj.reviewNumber)
+		k=obj.reviewNumber
+	for (var i=j; i<k;i++ ){
 		var p =$("<li>");
 		p.text(obj.review[i]);
 		var t=$("<p>");
