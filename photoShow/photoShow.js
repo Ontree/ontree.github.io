@@ -161,7 +161,7 @@ if ((id1 !="0")&&(id1!=""))
 {
 	$('.shade').attr("lang", "visual");
 	$('#mainShow').attr("lang", "visual");
-	currentPhoto=id2.parseInt();
+	currentPhoto=parseInt(id2);
 	loadObj("series_"+id1+".json");		
 }
 
