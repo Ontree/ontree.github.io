@@ -119,10 +119,10 @@ img{
 	float:right;
 }
 #prePage:hover{
-	background-color: #F2F2F2;
+	background-color: #DBDBDB;
 }
 #nextPage:hover{
-	background-color: #F2F2F2;
+	background-color: #DBDBDB;
 }
 #turnPage  a {
    text-align:center;
