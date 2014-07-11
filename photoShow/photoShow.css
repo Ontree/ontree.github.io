@@ -43,7 +43,7 @@ img{
 	width: 100%;
 	height: 100%;
 	background-color: black;
-	transition: opacity 3s;
+	transition: opacity 2s;
 }
 
 .shade:lang(visual){
@@ -53,9 +53,16 @@ img{
 }
 
 #mainShow{
-	display: none;
+	z-index: -101;
 	position: absolute;
 	top:100px;
 	margin:0 auto;
 	width:800px;
+	opacity: 0;
+	transition: opacity 2s;
+}
+#mainShow:lang(visual){
+	//display: block;
+	z-index: 2;
+	opacity: 0.9;
 }
