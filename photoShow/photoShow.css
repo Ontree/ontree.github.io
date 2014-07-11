@@ -110,7 +110,7 @@ img{
 #prePage{
 	border-top: 2px solid #DBDBDB;
 	border-right: 2px solid #DBDBDB;
-	width:49%;
+	width:49.8%;
 	float: left;
 }
 #nextPage{
@@ -120,4 +120,17 @@ img{
 	float:right;
 }
 
-					
+#turnPage  a {
+   text-align:center;
+}
+
+#turnPage  a:link  {
+ color:#666; text-decoration:none;
+}
+#turnPage  a:visited  {
+ color:#666;text-decoration:none;
+}
+#turnPage  a:hover  {
+ color:#FFF;text-decoration:none;font-weight:bold;
+ background:#C00;
+}	
