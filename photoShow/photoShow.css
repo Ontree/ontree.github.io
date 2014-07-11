@@ -9,7 +9,7 @@ div{
 }
 #seriesPreview{
 	margin:0 auto;
-	width:100%;
+	width:90%;
 	//overflow:hidden;
 	padding-top: 50px;
 	padding-left: 50px;
@@ -61,7 +61,7 @@ img{
 	//display: none;
 	z-index: -100;
 	opacity: 0;
-	position:absolute;
+	position:fixed;
 	top:0;
 	left:0;
 	width: 100%;
@@ -78,7 +78,7 @@ img{
 
 #mainShow{
 	z-index: -101;
-	position: fixed;
+	position: absolute;
 	top:100px;
 	left:10%;
 	width:80%;
@@ -97,27 +97,25 @@ img{
 }
 .photo{
 	display: none;
-	position: fixed;
-	left:10%;
-	width:64%;
+	position: absolute;
+	left:0;
+	width:80%;
 	cursor: "icon.png";
 }
 
 #nextPhoto{
 	width:32%;
-	height:700px;
+	height:100%;
 	z-index:5;
 	position:fixed;
-	top:100px;
 	left:42%;
 	cursor:e-resize;
 }
 #prePhoto{
 	width:32%;
-	height:700px;
+	height:100%;
 	z-index:5;
 	position:fixed;
-	top:100px;
 	left:10%;
 	cursor: w-resize;
 }
