@@ -153,7 +153,9 @@ function createSeries(){
 		e4.append(e5);
 		e2.append(e3);
 		e2.append(e4);
+		e2.css("display","none");
 		e1.append(e2);
+		e2.fadeIn();
 		$('.seriesPreviewItem').click((function(){
 			return function(){
 				$('.shade').attr("lang", "visual");
