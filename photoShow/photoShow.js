@@ -157,7 +157,7 @@ for(var i=0; i<arrCookie.length; i++){
 		id2=arr[1];
 	}
 }  
-if (id1 !="0")
+if ((id1 !="0")&&(id1))
 {
 	$('.shade').attr("lang", "visual");
 	$('#mainShow').attr("lang", "visual");
