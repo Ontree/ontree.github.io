@@ -101,3 +101,16 @@ img{
 	text-align: right;
 	margin:0;
 }
+#turnPage{
+	background-color: color:#BBB;
+	margin-bottom: 0;
+	color: #888;
+}
+#prePage{
+	border-top: 2px solid #F2F2F2;
+	border-right: 2px solid #F2F2F2;
+}
+#nextPage{
+	border-top: 2px solid #F2F2F2;
+}
+					
