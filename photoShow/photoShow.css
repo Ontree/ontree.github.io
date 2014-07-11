@@ -92,11 +92,10 @@ img{
 	padding:0;
 }
 #reviewBar li{
-	width: 100%;
 	color:#888;
 	border-bottom: 1px solid #F2F2F2;
-	margin-right: 10px;
-	margin-left: 10px;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 #reviewBar li p{
 	text-align: right;
