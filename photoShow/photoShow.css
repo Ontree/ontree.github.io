@@ -105,12 +105,19 @@ img{
 	background-color: color:#BBB;
 	margin-bottom: 0;
 	color: #888;
+	width:100%;
 }
 #prePage{
-	border-top: 2px solid #F2F2F2;
-	border-right: 2px solid #F2F2F2;
+	border-top: 2px solid #DBDBDB;
+	border-right: 2px solid #DBDBDB;
+	width:49%;
+	float: left;
 }
 #nextPage{
-	border-top: 2px solid #F2F2F2;
+	border-top: 2px solid #DBDBDB;
+	border-left: 2px solid #DBDBDB;
+	width:50%;
+	float:right;
 }
+
 					
