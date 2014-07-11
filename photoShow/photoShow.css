@@ -104,7 +104,11 @@ img{
 	position:fixed;
 	top:100px;
 	left:10%;
-	opacity: 0.7;
+	opacity: 0.6;
+	cursor: hand;
+}
+#close:hover{
+	opacity: 0.9;
 }
 #reviewBar{
 	overflow: hidden;
