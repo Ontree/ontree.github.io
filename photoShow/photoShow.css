@@ -68,7 +68,7 @@ img{
 }
 .photo{
 	position:fixed;
-
+	opacity: 0;
 	transition: opacity 2s;
 }
 .below{
