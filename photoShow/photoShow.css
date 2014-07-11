@@ -89,13 +89,16 @@ img{
 }
 
 #reviewBar ul{
-	width: 100%;
+	padding:0;
 }
 #reviewBar li{
 	width: 100%;
 	color:#888;
-	border: 1px solid #F2F2F2;
+	border-bottom: 1px solid #F2F2F2;
+	margin-right: 10px;
+	margin-left: 10px;
 }
 #reviewBar li p{
 	text-align: right;
+	margin:0;
 }
