@@ -20,7 +20,8 @@ var background1 = new $.gameQuery.Animation({imageURL: "space.jpg"});
 //音效
 var click_1 = $('<audio id="click_1" src="click_1.mp3">');
 $("body").append(click_1);
-
+var click_2 = $('<audio id="click_1" src="click_1.mp3">');
+$("body").append(click_2);
 
 //玩家对象
 var playerAni=['blue', 'white', 'green'];
