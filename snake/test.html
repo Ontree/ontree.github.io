@@ -1,0 +1,49 @@
+ <html> 
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>test</title>
+    <script type="text/javascript" src="http://www.w3school.com.cn/jquery/jquery-1.11.1.min.js"></script>
+      <script type="text/javascript" src="jquery_gamequery-0.7.1.js"></script>
+
+    <style type="text/css">
+    html,body{
+      margin: 0;
+      padding: 0;
+      background: black;
+    }
+    #welcomeScreen{
+      width: 700px; 
+      height: 250px; 
+      position: absolute; 
+      z-index: 100; 
+      //background-image: url(logo.png); 
+      font-family: verdana, sans-serif;
+    }
+    #loadingBar{
+      position: relative;
+      left: 100px; 
+      height: 15px; 
+      width: 0px; 
+      background: red;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="playground" style="width: 700px; height: 250px; background: green;">
+      <div id="welcomeScreen">
+              <div style="position: absolute; top: 120px; width: 700px; color: white;">
+                <div id="loadingBar" ></div><br />
+                <center><a style="cursor: pointer;" id="startbutton">
+                  Click here to start!
+                </a></center>
+              </div>
+            </div>
+    </div>
+    <div>
+    <a style="cursor: pointer; color:red ;float:right" id="replay">
+                  replay
+                </a>
+        </div>
+    <script type="text/javascript" src="test.js"></script>
+  </body>
+  </html>
