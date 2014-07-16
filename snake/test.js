@@ -1,12 +1,12 @@
-
-var PLAYGROUND_HEIGHT=300, PLAYGROUND_WIDTH=450,REFRESH_RATE=70, BLOCK_LEN=6;
+var PLAYGROUND_HEIGHT=600, PLAYGROUND_WIDTH=900,REFRESH_RATE=70, BLOCK_LEN=12;
 var GAMEOVER = false, GAMESRART = 0;
 var MAX_X=(PLAYGROUND_WIDTH-PLAYGROUND_WIDTH%BLOCK_LEN)/BLOCK_LEN;
 var MAX_Y=(PLAYGROUND_HEIGHT-PLAYGROUND_HEIGHT%BLOCK_LEN)/BLOCK_LEN;
 var D_BODY_BLOCK = 4;//吃一块食物增加的长度
 var PI = 3.1415926;
 var flag=0;
-var targetNumber= ['green','blue'];
+var music_click= 0, music_long= 0;
+var targetNumber= ['green','blue','yellow'];
 
 
 //游戏组织
@@ -18,10 +18,7 @@ var targetNumber= ['green','blue'];
 var background1 = new $.gameQuery.Animation({imageURL: "space.jpg"});
 
 //音效
-var click_1 = $('<audio id="click_1" src="click_1.mp3">');
-$("body").append(click_1);
-var click_2 = $('<audio id="click_1" src="click_1.mp3">');
-$("body").append(click_2);
+
 
 //玩家对象
 var playerAni=['blue', 'white', 'green'];
@@ -84,6 +81,7 @@ function playerBody(node, di, body_Id, c){
 function player(){
 	var length = 0;
 	var direction = 'right';
+	var directionChange = 'right';
 	//speed = 3;
 	var lenToAdd = 1;
 	var color = 'white';
@@ -111,6 +109,7 @@ function player(){
 	this.addBody();
 
 	this.update = function(){
+		direction = directionChange;
 		for (var i=0;i<length;i++){
 			$('#playerBody_'+i)[0].playerBody.updatePosition();
 		}
@@ -129,6 +128,7 @@ function player(){
 		else{
 			theBalls.addBall();
 		}
+		$('#eat')[0].play();
 	}
 
 	this.getLength = function(){
@@ -143,19 +143,19 @@ function player(){
 		switch(direction){
 			case 'left':
 				if (dir != 'right')
-					direction = dir;
+					directionChange = dir;
 				break;
 			case 'right':
 				if (dir != 'left')
-					direction = dir;
+					directionChange = dir;
 				break;
 			case 'up':
 				if (dir != 'down')
-					direction = dir;
+					directionChange = dir;
 				break;
 			case 'down':
 				if (dir != 'up')
-					direction = dir;
+					directionChange = dir;
 				break;
 		}
 	}
@@ -237,29 +237,36 @@ function ball(node,s){
 		color = c;
 	}
 	this.update = function(){
+		if (speed == 0){
+			return;
+		}
 		if (deStackFlow>20){
-			this.node.remove();
+			debugger;
+			//theBalls.number--;
+			this.node.x(10000);
+			this.node.y(10000);
+			speed = 0;
+			return;
 		}
 		var dx = Math.round(speed*Math.cos(angle));
 		var dy = -Math.round(speed*Math.sin(angle));
-		if (Math.abs(dx) <= 1 || Math.abs(dy) <= 1){
+		while (Math.abs(dx) <= 2 || Math.abs(dy) <= 2){
 			angle = Math.random() * 2* PI;
-			deStackFlow++;
-			return;
+			dx = Math.round(speed*Math.cos(angle));
+			dy = -Math.round(speed*Math.sin(angle));
 		}
 		this.node.x(this.node.x()+dx);
 		this.node.y(this.node.y()+dy);
 		if (this.node.x()>PLAYGROUND_WIDTH||this.node.x()<0||this.node.y()>PLAYGROUND_HEIGHT ||this.node.y()<0){
-			deStackFlow++;
 			angle = PI+angle; 
 			if (this.node.x()>PLAYGROUND_WIDTH)
-				this.node.x(PLAYGROUND_WIDTH-7);
+				this.node.x(PLAYGROUND_WIDTH-14);
 			if (this.node.x()<0)
-				this.node.x(7);
+				this.node.x(14);
 			if (this.node.y()>PLAYGROUND_HEIGHT)
-				this.node.y(PLAYGROUND_HEIGHT-7);
+				this.node.y(PLAYGROUND_HEIGHT-14);
 			if (this.node.y()<0)
-				this.node.y(7);
+				this.node.y(14);
 		}
 
 		//碰碎target
@@ -277,10 +284,18 @@ function ball(node,s){
       					theFood.addFood();
       				}
       			}
-      			var name = this.id;
-      			name = name.replace(/target/, "targetLight");
-      			$("#"+name).remove();
-      			this.remove();
+      			var name1 = this.id;
+      			var name2;
+      			name2 = name1.replace(/target/, "targetLight");
+      			$("#"+name2).addClass('targetRemove');
+      			$("#"+name1).addClass('targetRemove');
+      			debugger;
+      			$("#"+name1).removeClass("target");
+      			
+
+      			$('#long_'+music_long)[0].play();
+      			music_long++;
+      			music_long = music_long % 4;
       		}
       	});
 
@@ -301,18 +316,20 @@ function ball(node,s){
 		}	
 
 		if (collided.length > 0){
-			if (deStackFlow ==0){
-				//debugger;
-				$('#click_1')[0].load();
-				$('#click_1')[0].play();
+			if (deStackFlow ==0){// 音效
+				//debugger
+				$('#click_'+music_click)[0].play();
+				music_click++;
+				music_click = music_click % 16;
 			}
-			deStackFlow++;
+			
 			var cod = $(collided[0]);
 			var cx = cod.x();
 			var cy = cod.y();
 			var wid = cod.width();
 			if (collided.length >2){
 				angle = PI+angle;
+				deStackFlow++;
 				this.update();
 				return;
 			}
@@ -328,6 +345,7 @@ function ball(node,s){
 				}
 				else{
 					angle = PI+angle;
+					deStackFlow++;
 					this.update();
 					return;
 
@@ -336,10 +354,12 @@ function ball(node,s){
 			if (dx >=0 && dy>=0){
 				if (this.node.x()< cx){
 					angle = PI-angle;
+					deStackFlow++;
 					this.update();
 				}
 				else{
 					angle = 0-angle;
+					deStackFlow++;
 					this.update();
 				}
 				return;
@@ -347,10 +367,12 @@ function ball(node,s){
 			if (dx >=0 && dy<0){
 				if (this.node.x()< cx){
 					angle = PI-angle;
+					deStackFlow++;
 					this.update();
 				}
 				else{
 					angle = 0-angle;
+					deStackFlow++;
 					this.update();
 				}
 				return;
@@ -358,10 +380,12 @@ function ball(node,s){
 			if (dx <0 && dy<0){
 				if (this.node.x()+BLOCK_LEN< cx+wid){
 					angle = 0-angle;
+					deStackFlow++;
 					this.update();
 				}
 				else{
 					angle = PI-angle;
+					deStackFlow++;
 					this.update();
 				}
 				return;
@@ -369,10 +393,12 @@ function ball(node,s){
 			if (dx <0 && dy>=0){
 				if (this.node.y()< cy){
 					angle = 0-angle;
+					deStackFlow++;
 					this.update();
 				}
 				else{
 					angle = PI-angle;
+					deStackFlow++;
 					this.update();
 				}
 				return;
@@ -382,39 +408,41 @@ function ball(node,s){
 	}
 }
 function balls(){
-	var speed = 5.4;
-	var number = 0;
-	var wid = 6;
+	var speed = 11;
+	this.number = 0;
+	var wid = 12;
 	this.addBall = function(){
 		while(true){
 			var pox = Math.round(Math.random() * PLAYGROUND_WIDTH);
 			var poy = Math.round(Math.random() * PLAYGROUND_HEIGHT);
-			$("#balls").addSprite("ball_"+number,{animation: ballAni['white'], width: wid, height: wid, posx: pox, posy: poy});
-			var collided = $("#ball_"+number).collision(".gQ_group,.playerBody,.wall,.target");
+			$("#balls").addSprite("ball_"+this.number,{animation: ballAni['white'], width: wid, height: wid, posx: pox, posy: poy});
+			var collided = $("#ball_"+this.number).collision(".gQ_group,.playerBody,.wall,.target");
 			if(collided.length > 0){
-				$("#ball_"+number).remove();
+				$("#ball_"+this.number).remove();
 			}
 			else {
 				break;
 			}
 		}
-		$('#ball_'+number).addClass("ball");
-		$('#ball_'+number)[0].ball = new ball($('#ball_'+number), speed);
-		$('#ball_'+number).css("background-size", "6px 6px");
+		$('#ball_'+this.number).addClass("ball");
+		$('#ball_'+this.number)[0].ball = new ball($('#ball_'+this.number), speed);
+		$('#ball_'+this.number).css("background-size", "12px 12px");
 
-		$("#balls").addSprite("ballLight_"+number,{animation: ballAni['white'], width: BLOCK_LEN+4, height: BLOCK_LEN+4, posx: pox-2, posy: poy-2});
-		$('#ballLight_'+number).css("background-size", "10px 10px");
-		$('#ballLight_'+number).addClass("ballLight");
-		$('#ballLight_'+number).css("opacity","0.5");
-		number++;
+		$("#balls").addSprite("ballLight_"+this.number,{animation: ballAni['white'], width: BLOCK_LEN+8, height: BLOCK_LEN+8, posx: pox-4, posy: poy-4});
+		$('#ballLight_'+this.number).css("background-size", "20px 20px");
+		$('#ballLight_'+this.number).addClass("ballLight");
+		$('#ballLight_'+this.number).css("opacity","0.5");
+		this.number++;
 	}
 	this.update = function(){
-		for (var i = 0; i < number;i++){
-			$('#ball_'+i)[0].ball.update();
-			x1 = $('#ball_'+i).x();
-			y1 = $('#ball_'+i).y();
-			$('#ballLight_'+i).x(x1-2);
-			$('#ballLight_'+i).y(y1-2);
+		for (var i = 0; i < this.number;i++){
+			if ($('#ball_'+i).length){
+				$('#ball_'+i)[0].ball.update();
+				x1 = $('#ball_'+i).x();
+				y1 = $('#ball_'+i).y();
+				$('#ballLight_'+i).x(x1-4);
+				$('#ballLight_'+i).y(y1-4);
+			}
 		}
 	}
 	this.addBall();
@@ -452,8 +480,8 @@ function targets(){
 		$('#target_'+number)[0].target = new target($('#target_'+number), color);
 		$('#target_'+number).css("background-size", ""+(block_width*BLOCK_LEN)+'px '+ (block_height*BLOCK_LEN)+'px');
 
-		$("#targets").addSprite("targetLight_"+number,{animation: targetAni[color+'Light'], width: block_width*BLOCK_LEN+22, height: block_height*BLOCK_LEN+22, posx: block_x*BLOCK_LEN-11, posy: block_y*BLOCK_LEN-11});	
-		$('#targetLight_'+number).css("background-size", ""+(block_width*BLOCK_LEN+22)+'px '+ (block_height*BLOCK_LEN+22)+'px');
+		$("#targets").addSprite("targetLight_"+number,{animation: targetAni[color+'Light'], width: block_width*BLOCK_LEN+44, height: block_height*BLOCK_LEN+44, posx: block_x*BLOCK_LEN-22, posy: block_y*BLOCK_LEN-22});	
+		$('#targetLight_'+number).css("background-size", ""+(block_width*BLOCK_LEN+44)+'px '+ (block_height*BLOCK_LEN+44)+'px');
 		//$('#targetLight_'+number).css("opacity","0.5");
 		number++;
 
@@ -462,7 +490,7 @@ function targets(){
 
 
 //更新
-$("#playground").registerCallback(function(){ 
+$("#playscreen").registerCallback(function(){ 
 	if (GAMEOVER || GAMESRART != 2){
 		return;
 	}
@@ -473,6 +501,8 @@ $("#playground").registerCallback(function(){
     if(collided.length > 0){
     	collided.each(function(){
     			GAMEOVER = true;
+				$.playground().clearAll();
+				$("#lose").css("display",'block');
     	}) 
     }
 
@@ -524,16 +554,17 @@ $(document).keydown(function(e){
 
 var theWall, thePlayer, theTargets, theFood, theBalls;
 function setGame(){ 
-	$("#playground").playground({height: PLAYGROUND_HEIGHT, width: PLAYGROUND_WIDTH})
+	$("#playscreen").playground({height: PLAYGROUND_HEIGHT, width: PLAYGROUND_WIDTH})
 	.addGroup("background", {width: PLAYGROUND_WIDTH, height: PLAYGROUND_HEIGHT}).end()
 	.addGroup("foods", {width: PLAYGROUND_WIDTH, height: PLAYGROUND_HEIGHT}).end()
 	.addGroup("balls", {width: PLAYGROUND_WIDTH, height: PLAYGROUND_HEIGHT}).end()
 	.addGroup("targets", {width: PLAYGROUND_WIDTH, height: PLAYGROUND_HEIGHT}).end()
 	.addGroup("walls", {width: PLAYGROUND_WIDTH, height: PLAYGROUND_HEIGHT}).end()
 	.addGroup("player", {width: PLAYGROUND_WIDTH, height: PLAYGROUND_HEIGHT}).end();
-	$("#background")
-     .addSprite("background1", {animation: background1, 
-             width: PLAYGROUND_WIDTH, height: PLAYGROUND_HEIGHT});
+	//$("#background").addSprite("background1", {animation: background1, width: PLAYGROUND_WIDTH, height: PLAYGROUND_HEIGHT});
+	//$('#background1').css('background-size', "" + PLAYGROUND_WIDTH + "px " + PLAYGROUND_HEIGHT)	
+
+
 }
 
 function toStartGame(n){
@@ -557,29 +588,69 @@ function toStartGame(n){
 	GAMEOVER =false;
 }
 
-//点击开始游戏
-
-$("#startbutton").click(function(){
+//选关,开始游戏
+var levelChosen = 1;
+$(".level").click(function(){
+	debugger;
 	setGame();
+	levelChosen  =parseInt(this.id[this.id.length-1]);
+	$('#level').css("display", "none");
     $.playground().startGame(function(){
-    	toStartGame(1);
-        $("#welcomeScreen").fadeTo(1000,0,function(){
-        	$(this).remove();
-        });
-        GAMESRART =1;
-    });
-})
-
-$("#replay").click(function(){
-	$.playground().clearAll();
-	$('#gQ_scenegraph').remove();
-	GAMEOVER =true;
-	setGame();
-    $.playground().startGame(function(){
-    	toStartGame(1);
-        //$("#welcomeScreen").fadeTo(1000,0,function(){
-        //	$(this).remove();
+    	toStartGame(levelChosen);
+       // $("#welcomeScreen").fadeTo(1000,0,function(){
+       // 	$(this).remove();
         //});
         GAMESRART =1;
     });
 })
+
+//normal
+$("#choice1").click(function(){
+	$('#level').css("display", "block");
+})
+
+
+//暂停
+$('.playaction').click(function(){
+	$.playground().pauseGame();
+})
+
+//继续
+$('.reply').click(function(){
+	$.playground().resumeGame();
+})
+
+
+$($('.reply1')[0]).click(function(){
+	var act = $($('.messagetitle')[0].firstChild).attr('src');
+	if (act == 'image/quit1.png') //quit's yes
+	{
+		$.playground().clearAll();
+	}
+	else                          //retry's yes
+	{
+		$.playground().clearAll();
+		$('#gQ_scenegraph').remove();
+		GAMEOVER =true;
+		setGame();
+    	$.playground().startGame(function(){
+    	toStartGame(levelChosen);
+        GAMESRART =1;
+    	});
+    }
+})
+
+
+$($('.reply1')[1]).click(function(){
+	$.playground().resumeGame();
+});
+
+$($('.reply1')[3]).click(function() { //lose's retry
+	$('#gQ_scenegraph').remove();
+	GAMEOVER =true;
+	setGame();
+    $.playground().startGame(function(){
+    	toStartGame(levelChosen);
+        GAMESRART =1;
+    });
+});

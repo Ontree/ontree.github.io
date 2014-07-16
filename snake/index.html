@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--页面属性-->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="author" content="XuZiru">
+		<title>贪吃蛇</title>
+		<!--主页样式文件-->
+		<link rel="stylesheet" href="style.css">
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/gamequery.js"></script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="title">贪吃蛇啦啦啦</div>
+			<div id="playground">
+				<embed src="image/background.swf" width="100%" height="100%" quality="high">
+				<audio src="music/bgmusic.mp3" loop="loop"></audio>
+				<div id="play" style="opacity: 0.75"><img src="image/play.png"></div>
+				<div id="playground1" style="display: none">
+					<div id="gametitle"><img src="image/title.png"></div>
+					<div id="optionbgl"></div>
+					<div id="optionbgr">
+						<div id="sound"><img src="image/soundon1.png" height="20px" width="auto"></div>
+					</div>
+					<div id="option">
+						<div id="choice1"><img src="image/normal1.png"></div>
+						<div id="choice2"><img src="image/help1.png"></div>
+					</div>
+				</div>
+				<div id="help" style="display: none">
+					<div id="helptitle"><img src="image/help1.png"></div>
+					<div class="type">
+						<img src="image/normal1.png"><br>
+						<p>
+							&nbsp;&nbsp;&nbsp;&nbsp;控制蛇让小球撞击障碍物并消除它。<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;此时，仅当小球与障碍物颜色一致时碰撞才有效。而小球与蛇身某种颜色碰撞时，会变成这种颜色。蛇吃到不同物体时新增的蛇身颜色便是这种颜色。
+						</p>
+					</div>
+					<div id="helpback"><img src="image/goback1.png"></div>
+				</div>
+				<div id="mode" style="display: none">
+					<div id="playscreen" style="display: block" >
+						<div id="level" style="display: block; position: absolute; top: 50px; left: 50px">
+							<div><img src="image/level.png"></div>
+							<div id="level_1" class="level">level 1</div>
+							<div id="level_2" class="level">level 2</div>
+							<div id="level_3" class="level">level 3</div>
+							<div id="level_4" class="level">level 4</div>
+							<div id="level_5" class="level">level 5</div>
+							<div id="level_6" class="level">level 6</div>
+						</div>
+						<div id="messagebox" style="display: none;">
+							<div class="messagetitle"><img src="image/quit1.png" height="50px" width="auto"></div>
+							<hr style="border: none; border-top: 5px solid #00ff00; opacity: 0.5; margin: 10px 20px">
+							<div class="reply" style="display: none">
+								<img src="image/continue1.png" height="25px" width="auto">
+							</div>
+							<div class="reply1"><img src="image/yes1.png" height="25px" width="auto"></div>
+							<div class="reply1"><img src="image/no1.png" height="25px" width="auto"></div>					
+						</div>
+						<div id="lose" style="display: none">
+							<div class="messagetitle"><img src="image/youlose.png" height="50px" width="auto"></div>
+							<hr style="border: none; border-top: 5px solid #00ff00; opacity: 0.5; margin: 10px 20px">
+							<div class="reply1"><img src="image/quit1.png" height="25px" width="auto"></div>
+							<div class="reply1"><img src="image/retry1.png" height="25px" width="auto"></div>					
+						</div>
+					</div>
+					<div style="margin-left: 920px">
+					<div id="playtitle"><img src="image/title.png" height="20%"></div>
+					<hr style="border:none; border-top: 5px solid #00ff00; margin-bottom: 3%">
+					<hr style="border:none; border-top: 10px solid #00ff00; margin: 3%0 6% 0;">
+					<!--
+					<div class="playscore"><img src="image/score.png" width="20%"></div>
+					<hr style="border:none; border-top: 5px solid #00ff00; margin: 20px 0;">
+					-->
+					<div class="playaction"><img src="image/pause1.png"></div>	
+					<div class="playaction"><img src="image/quit1.png"></div>	
+					<div class="playaction"><img src="image/retry1.png"></div>						
+					<hr style="border:none; border-top: 5px solid #00ff00; margin: 6% 0 3% 0;">					
+					<hr style="border:none; border-top: 10px solid #00ff00; margin-bottom: 3%">
+					<div id="playtype"><img src="image/normal1.png" width="70%"></div>					
+					<hr style="border:none; border-top: 5px solid #00ff00; margin: 3% 0;">	
+					<div id="playsound"><img src="image/soundon1.png" height="18px"></div>		
+					</div>		
+				</div>
+			</div>
+			<div id="footer">Copyright&copycmh&xzr</div>
+			<script type="text/javascript" src="js/play.js"></script>
+			<script type="text/javascript" src="js/index.js"></script>
+			<script type="text/javascript" src="js/gameprepare.js"></script>
+			<script type="text/javascript" src="js/game.js"></script>
+			<script type="text/javascript" src="test.js"></script>c
+		</div>
+	<audio id="click_0" src="click_5.mp3"></audio>
+    <audio id="click_1" src="click_1.mp3"></audio>
+    <audio id="click_2" src="click_2.mp3"></audio>
+    <audio id="click_3" src="click_4.mp3"></audio>
+    <audio id="click_4" src="click_3.mp3"></audio>
+    <audio id="click_5" src="click_5.mp3"></audio>
+    <audio id="click_6" src="click_6.mp3"></audio>
+    <audio id="click_7" src="click_2.mp3"></audio>
+    <audio id="click_8" src="click_1.mp3"></audio>
+    <audio id="click_9" src="click_5.mp3"></audio>
+    <audio id="click_10" src="click_6.mp3"></audio>
+    <audio id="click_11" src="click_3.mp3"></audio>
+    <audio id="click_12" src="click_4.mp3"></audio>
+    <audio id="click_13" src="click_2.mp3"></audio>
+    <audio id="click_14" src="click_3.mp3"></audio>
+    <audio id="click_15" src="click_1.mp3"></audio>
+    <audio id="click_16" src="click_4.mp3"></audio>
+    <audio id="click_17" src="click_6.mp3"></audio>
+    <audio id="long_1" src="long_1.mp3"></audio>
+    <audio id="long_2" src="long_2.mp3"></audio>
+    <audio id="long_3" src="long_3.mp3"></audio>
+    <audio id="long_0" src="long_4.mp3"></audio>
+    <audio id="eat" src="eat.mp3"></audio>
+	</body>
+</html>
