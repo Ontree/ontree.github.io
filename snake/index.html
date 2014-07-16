@@ -13,10 +13,9 @@
 	</head>
 	<body>
 		<div id="container">
-			<div id="title">贪吃蛇啦啦啦</div>
-			<div id="playground">
+			<div id="playground" style="margin-top: 30px">
 				<embed src="image/background.swf" width="100%" height="100%" quality="high">
-				<audio src="music/bgmusic.mp3" loop="loop"></audio>
+				
 				<div id="play" style="opacity: 0.75"><img src="image/play.png"></div>
 				<div id="playground1" style="display: none">
 					<div id="gametitle"><img src="image/title.png"></div>
@@ -35,7 +34,9 @@
 						<img src="image/normal1.png"><br>
 						<p>
 							&nbsp;&nbsp;&nbsp;&nbsp;控制蛇让小球撞击障碍物并消除它。<br>
-							&nbsp;&nbsp;&nbsp;&nbsp;此时，仅当小球与障碍物颜色一致时碰撞才有效。而小球与蛇身某种颜色碰撞时，会变成这种颜色。蛇吃到不同物体时新增的蛇身颜色便是这种颜色。
+							&nbsp;&nbsp;&nbsp;&nbsp;开始时小球颜色是白色，此时小球与任何障碍物碰撞均没有反应。因为仅当小球和障碍物颜色相同时，才可以消除障碍物。而当所有障碍物均被消除时，即可过关。<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;改变小球颜色的方法是：当小球与蛇身不是白色的部分碰撞时，小球颜色被改为相应的颜色。<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;蛇可以吃的食物有4种颜色，分别是蓝色、绿色、黄色和白色。前三种使蛇身增加相应颜色的一段，白色M标志小球则使小球数量加1，至于是哪个小球数量加1就是随机的啦。因此也共有4种颜色的小球，分别是蓝色、绿色、黄色和白色。其中白色为初始设置。
 						</p>
 					</div>
 					<div id="helpback"><img src="image/goback1.png"></div>
@@ -66,6 +67,12 @@
 							<div class="reply1"><img src="image/quit1.png" height="25px" width="auto"></div>
 							<div class="reply1"><img src="image/retry1.png" height="25px" width="auto"></div>					
 						</div>
+						<div id="win" style="display: none">
+							<div class="messagetitle"><img src="image/youwin.png" height="50px" width="auto"></div>
+							<hr style="border: none; border-top: 5px solid #00ff00; opacity: 0.5; margin: 10px 20px">
+							<div class="reply1"><img src="image/quit1.png" height="25px" width="auto"></div>
+							<div class="reply1"><img src="image/nextlevel1.png" height="25px" width="auto"></div>
+						</div>
 					</div>
 					<div style="margin-left: 920px">
 					<div id="playtitle"><img src="image/title.png" height="20%"></div>
@@ -91,7 +98,7 @@
 			<script type="text/javascript" src="js/index.js"></script>
 			<script type="text/javascript" src="js/gameprepare.js"></script>
 			<script type="text/javascript" src="js/game.js"></script>
-			<script type="text/javascript" src="test.js"></script>c
+			<script type="text/javascript" src="test.js"></script>
 		</div>
 	<audio id="click_0" src="click_5.mp3"></audio>
     <audio id="click_1" src="click_1.mp3"></audio>
@@ -116,5 +123,6 @@
     <audio id="long_3" src="long_3.mp3"></audio>
     <audio id="long_0" src="long_4.mp3"></audio>
     <audio id="eat" src="eat.mp3"></audio>
+    <audio id='drum' src='drum.mp3'></audio>
 	</body>
 </html>

@@ -5,9 +5,9 @@ var MAX_Y=(PLAYGROUND_HEIGHT-PLAYGROUND_HEIGHT%BLOCK_LEN)/BLOCK_LEN;
 var D_BODY_BLOCK = 4;//吃一块食物增加的长度
 var PI = 3.1415926;
 var flag=0;
-var music_click= 0, music_long= 0;
+var music_click = 1, music_long = 0, playerLevel = 1;
 var targetNumber= ['green','blue','yellow'];
-
+var targetTotal = 0, targetOrigin;
 
 //游戏组织
 
@@ -21,9 +21,10 @@ var background1 = new $.gameQuery.Animation({imageURL: "space.jpg"});
 
 
 //玩家对象
-var playerAni=['blue', 'white', 'green'];
+var playerAni=['blue', 'white', 'green','yellow'];
 playerAni['green'] = new $.gameQuery.Animation({imageURL: "greenBody.png"});
 playerAni['blue'] = new $.gameQuery.Animation({imageURL: "blueBody.png"});
+playerAni['yellow'] = new $.gameQuery.Animation({imageURL: "yellowBody.png"});
 playerAni['white'] = new $.gameQuery.Animation({imageURL: "whiteBody.png"});
 
 function playerBody(node, di, body_Id, c){
@@ -170,26 +171,39 @@ function player(){
 var foodAni =['green','blue','special'];
 foodAni['green'] = new $.gameQuery.Animation({imageURL: "greenFood.png"});
 foodAni['blue'] = new $.gameQuery.Animation({imageURL: "blueFood.png"});
+foodAni['yellow'] = new $.gameQuery.Animation({imageURL: "yellowFood.png"});
 foodAni['special'] = new $.gameQuery.Animation({imageURL: "specialFood.png"});
 function food(){
 	this.addFood = function(){
-		var ran = Math.random();
-		var color;
-		if (ran<0.4 && targetNumber['green']>0){
-			color = 'green';
-		}
-		else{
-			if (ran < 0.8 && targetNumber['blue']>0){
-				color = 'blue';
+		var ran;
+		var color="";
+		while(color==""){
+			ran = Math.random();
+			if (ran < 0.3 && targetNumber['green']>0){
+				color = 'green';
 			}
-			else
-				color = 'special';
+			else{
+				if (ran < 0.6 && targetNumber['blue']>0 && ran >= 0.3){
+					color = 'blue';
+				}
+				else{
+					if (ran < 0.9 && targetNumber['yellow']>0 && ran >= 0.6){
+						color = 'yellow';
+					}
+					else{
+						if (ran >=0.9)
+							color = 'special';
+					}
+				}
+				
+			}
 		}
 		while(true){
 			var pox = Math.ceil(Math.random() * MAX_X - 1)*BLOCK_LEN;
 			var poy = Math.ceil(Math.random() * MAX_Y - 1)*BLOCK_LEN;
 			$("#foods").addSprite("food",{animation: foodAni[color], width: BLOCK_LEN, height: BLOCK_LEN, posx: pox, posy: poy});
 			$("#food").addClass('color');
+			$("#food").css("background-size", ""+BLOCK_LEN+'px '+BLOCK_LEN+'px');
 			$("#food")[0].color = color;
 			var collided = $("#food").collision(".gQ_group,.playerBody,.wall,.target");
 			if(collided.length > 0){
@@ -274,6 +288,21 @@ function ball(node,s){
 		collided.each(function(){
       		if(this.target.color == color){
       			targetNumber[this.target.color]--;
+      			targetTotal--;
+      			if (targetTotal<targetOrigin/2){
+      				$('#drum')[0].play();
+      			}
+      			if (!targetTotal){			//win!
+      				if (levelChosen == playerLevel){
+      					playerLevel++;
+      				 	$('#level_'+playerLevel).removeClass("lock").addClass('level');
+      				 	document.cookie="playerLevel="+playerLevel; 
+      				}
+      				$.playground().clearAll();
+					$('#gQ_scenegraph').remove();
+					GAMEOVER =true;
+					$('#win').css("display","block");
+      			}                            
       			if (targetNumber[this.target.color] == 0){	//改变身体和食物颜色
       				var cod = $('.playerBody');
       				for (var i =0 ;i < cod.length; i++){
@@ -447,15 +476,15 @@ function balls(){
 	}
 	this.addBall();
 }
-var ballAni =['green','blue','white','whiteLght'];
+var ballAni =['green','blue','white',];
 ballAni['green']=new $.gameQuery.Animation({imageURL: "greenBall.png"});
 ballAni['blue']=new $.gameQuery.Animation({imageURL: "blueBall.png"});
 ballAni['white']=new $.gameQuery.Animation({imageURL: "whiteBall.png"});
-
+ballAni['yellow']=new $.gameQuery.Animation({imageURL: "yellowBall.png"});
 
 
 //目标块
-var targetAni =['green','blue'];
+var targetAni =['green','blue','yellow'];
 targetAni['green'] = new $.gameQuery.Animation({imageURL: "greenTarget.png"});
 targetAni['blue'] = new $.gameQuery.Animation({imageURL: "blueTarget.png"});
 targetAni['yellow'] = new $.gameQuery.Animation({imageURL: "yellowTarget.png"});
@@ -474,14 +503,19 @@ function target(node, c){
 
 function targets(){
 	var number = 0;
+	var light;
 	this.addTarget = function(block_x, block_y, block_width, block_height, color){
+		light = 44;
+		if (block_width<=5){
+			light = 22;
+		}
 		$("#targets").addSprite("target_"+number,{animation: targetAni[color], width: block_width*BLOCK_LEN, height: block_height*BLOCK_LEN, posx: block_x*BLOCK_LEN, posy: block_y*BLOCK_LEN});	
 		$('#target_'+number).addClass("target");
 		$('#target_'+number)[0].target = new target($('#target_'+number), color);
 		$('#target_'+number).css("background-size", ""+(block_width*BLOCK_LEN)+'px '+ (block_height*BLOCK_LEN)+'px');
 
-		$("#targets").addSprite("targetLight_"+number,{animation: targetAni[color+'Light'], width: block_width*BLOCK_LEN+44, height: block_height*BLOCK_LEN+44, posx: block_x*BLOCK_LEN-22, posy: block_y*BLOCK_LEN-22});	
-		$('#targetLight_'+number).css("background-size", ""+(block_width*BLOCK_LEN+44)+'px '+ (block_height*BLOCK_LEN+44)+'px');
+		$("#targets").addSprite("targetLight_"+number,{animation: targetAni[color+'Light'], width: block_width*BLOCK_LEN+light, height: block_height*BLOCK_LEN+light, posx: block_x*BLOCK_LEN-light/2, posy: block_y*BLOCK_LEN-light/2});	
+		$('#targetLight_'+number).css("background-size", ""+(block_width*BLOCK_LEN+light)+'px '+ (block_height*BLOCK_LEN+light)+'px');
 		//$('#targetLight_'+number).css("opacity","0.5");
 		number++;
 
@@ -532,20 +566,20 @@ $(document).keydown(function(e){
 		case 66:
 			theBalls.addBall();
 			break;
-		case 37:
+		case 65:
 			thePlayer.setDirection('left');
 			break;
-		case 38:
+		case 87:
 			thePlayer.setDirection('up');
 			break;
-	    case 39:
+	    case 68:
 			thePlayer.setDirection('right');
 			break;
-	    case 40:
+	    case 83:
 		 	thePlayer.setDirection('down');
 			break;
 	}
-	if (GAMESRART == 1 && e.keyCode >=37 && e.keyCode <= 40){
+	if (GAMESRART == 1 && (e.keyCode ==65 || e.keyCode == 87 || e.keyCode ==68 || e.keyCode == 83)){
 		GAMESRART = 2;
 		thePlayer.eatFood('white');
 	}
@@ -577,11 +611,92 @@ function toStartGame(n){
 	theFood = new this.food();
 	switch(n){           //设定关卡
 		case 1:
+			theTargets.addTarget(25,15,20,20,'blue');
+			targetNumber['blue'] = 1;
+			targetNumber['yellow'] = 0;	
+			targetNumber['green'] = 0;	
+			targetTotal = 1;	
+			break;
+		case 2:
 			theTargets.addTarget(20,20,15,15,'blue');
 			theTargets.addTarget(40,40,10,17,'green');
 			targetNumber['green'] = 1;
-			targetNumber['blue'] = 1;	
+			targetNumber['blue'] = 1;
+			targetNumber['yellow'] = 0;
+			targetTotal = 2;	
 			break;
+		case 3:
+			theTargets.addTarget(20,0,10,20,'blue');
+			theTargets.addTarget(20,30,10,20,'blue');
+			theTargets.addTarget(40,15,20,20,'yellow');
+			targetNumber['yellow'] = 1;
+			targetNumber['blue'] = 2;
+			targetNumber['green'] = 0;
+			targetTotal = 3;	
+			break;
+		case 4:
+			theTargets.addTarget(32,13,5,5,'blue');
+			theTargets.addTarget(20,17,20,20,'green');
+			theTargets.addTarget(35,15,10,10,'yellow');
+			targetNumber['yellow'] = 1;
+			targetNumber['blue'] = 1;
+			targetNumber['green'] = 1;
+			targetTotal = 3;
+			break;
+		case 5:
+			theTargets.addTarget(20,22,4,4,'yellow');
+			theTargets.addTarget(27,15,4,4,'yellow');
+			theTargets.addTarget(27,22,4,4,'yellow');
+			theTargets.addTarget(27,29,4,4,'yellow');
+			theTargets.addTarget(34,8,4,4,'yellow');
+			theTargets.addTarget(34,15,4,4,'yellow');
+			theTargets.addTarget(34,22,4,4,'yellow');
+			theTargets.addTarget(34,29,4,4,'yellow');
+			theTargets.addTarget(34,36,4,4,'yellow');
+			theTargets.addTarget(41,15,4,4,'yellow');
+			theTargets.addTarget(41,22,4,4,'yellow');
+			theTargets.addTarget(41,29,4,4,'yellow');
+			theTargets.addTarget(48,22,4,4,'yellow');
+			targetNumber['yellow'] = 13;
+			targetNumber['blue'] = 0;
+			targetNumber['green'] = 0;
+			targetTotal = 13;
+			break;
+		case 6:
+			theTargets.addTarget(20,8,4,4,'green');
+			theTargets.addTarget(20,15,4,4,'green');
+			theTargets.addTarget(20,22,4,4,'green');
+			theTargets.addTarget(20,29,4,4,'green');
+			theTargets.addTarget(20,36,4,4,'green');
+			theTargets.addTarget(27,8,4,4,'green');
+			theTargets.addTarget(27,15,4,4,'yellow');
+			theTargets.addTarget(27,22,4,4,'yellow');
+			theTargets.addTarget(27,29,4,4,'yellow');
+			theTargets.addTarget(27,36,4,4,'green');
+			theTargets.addTarget(34,8,4,4,'green');
+			theTargets.addTarget(34,15,4,4,'yellow');
+			theTargets.addTarget(34,22,4,4,'blue');
+			theTargets.addTarget(34,29,4,4,'yellow');
+			theTargets.addTarget(34,36,4,4,'green');
+			theTargets.addTarget(41,8,4,4,'green');
+			theTargets.addTarget(41,15,4,4,'yellow');
+			theTargets.addTarget(41,22,4,4,'yellow');
+			theTargets.addTarget(41,29,4,4,'yellow');
+			theTargets.addTarget(41,36,4,4,'green');
+			theTargets.addTarget(48,8,4,4,'green');
+			theTargets.addTarget(48,15,4,4,'green');
+			theTargets.addTarget(48,22,4,4,'green');
+			theTargets.addTarget(48,29,4,4,'green');
+			theTargets.addTarget(48,36,4,4,'green');
+			targetNumber['yellow'] = 8;
+			targetNumber['blue'] = 1;
+			targetNumber['green'] = 16;
+			targetTotal = 25;
+			break;
+	}
+	targetOrigin = targetTotal;
+	for (var i = 0; i < $('audio').length; i++){
+		$('audio')[i].pause();
 	}
 	theFood.addFood();
 	theBalls = new this.balls();
@@ -654,3 +769,32 @@ $($('.reply1')[3]).click(function() { //lose's retry
         GAMESRART =1;
     });
 });
+
+
+//win
+$($('.reply1')[4]).click(function(){//quit
+	$.playground().clearAll();
+});
+$($('.reply1')[5]).click(function(){//next
+	if (levelChosen == 6){
+		$.playground().clearAll();
+	}
+	else{
+		levelChosen++;
+		setGame();
+    	$.playground().startGame(function(){
+    	toStartGame(levelChosen);
+        GAMESRART =1;
+		});
+    }
+});
+
+//cookie
+var strCookie=document.cookie; 
+var arr=strCookie.split("="); 
+if(arr.length>1){
+	playerLevel = parseInt(arr[1]);
+}
+for (var i = playerLevel+1; i <=6; i++ ){
+	$('#level_'+i).removeClass('level').addClass("lock");
+}

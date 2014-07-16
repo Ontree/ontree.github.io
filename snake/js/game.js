@@ -52,6 +52,10 @@ $('.reply1').mouseover(function() {
 	{
 		$(this.firstChild).attr('src', 'image/quit2.png');
 	}
+	else if (str == 'image/nextlevel1.png')
+	{
+		$(this.firstChild).attr('src', 'image/nextlevel2.png');
+	}
 	else
 	{
 		$(this.firstChild).attr('src', 'image/retry2.png');
@@ -70,6 +74,10 @@ $('.reply1').mouseout(function() {
 	else if (str == 'image/quit2.png')
 	{
 		$(this.firstChild).attr('src', 'image/quit1.png');
+	}
+	else if (str == 'image/nextlevel2.png')
+	{
+		$(this.firstChild).attr('src', 'image/nextlevel1.png');
 	}
 	else
 	{
@@ -133,9 +141,20 @@ $($('.reply1')[2]).click(function() {
 	$('#playground1').fadeIn('slow');
 	$('#lose').css('display', 'none');
 });
+$($('.reply1')[4]).click(function() {
+	$('#mode').css('display', 'none');
+	$('#playground1').fadeIn('slow');
+	$('#win').css('display', 'none');
+});
+
 //retry
 $($('.reply1')[3]).click(function() {
 	$('#lose').css('display', 'none');
+});
+
+//nextlevel
+$($('.reply1')[5]).click(function() {
+	$('#win').css('display', 'none');
 });
 
 //游戏页面之音效切换
