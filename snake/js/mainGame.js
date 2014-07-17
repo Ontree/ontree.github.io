@@ -251,8 +251,6 @@ function ball(node,s){
 			return;
 		}
 		if (deStackFlow>20){
-			debugger;
-			//theBalls.number--;
 			this.node.x(10000);
 			this.node.y(10000);
 			speed = 0;
@@ -286,7 +284,6 @@ function ball(node,s){
       			targetNumber[this.target.color]--;
       			targetTotal--;
       			if (targetTotal<targetOrigin/2){  //进入激动状态
-      				debugger;
       				$('#drum')[0].play();
       				$('.targetLight').each(function(){
       					this.remove();
@@ -549,7 +546,6 @@ function targets(){
 		$('#targetLight_'+number).addClass("targetLight");
 		
 		$("#targets").addSprite("targetRotate_"+number,{animation: Ani_2, width: block_width*BLOCK_LEN, height: block_height*BLOCK_LEN, posx: block_x*BLOCK_LEN, posy: block_y*BLOCK_LEN});	
-		debugger;
 		targetRotateAni["targetRotate_"+number] = Ani_2;
 		$("#targetRotate_"+number).css("background-size", ""+(block_width*BLOCK_LEN)+'px '+ (block_height*BLOCK_LEN)*7+'px');
 		$("#targetRotate_"+number).css("display","none");
@@ -760,7 +756,7 @@ function toStartGame(n){
 //选关,开始游戏
 var levelChosen = 1;
 $(".level:not(.lock)").click(function(){
-	debugger;
+
 	setGame();
 	levelChosen  =parseInt(this.id[this.id.length-1]);
 	$('#level').css("display", "none");
