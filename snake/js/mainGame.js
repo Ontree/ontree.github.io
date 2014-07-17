@@ -748,7 +748,7 @@ function toStartGame(n){
 
 //选关,开始游戏
 var levelChosen = 1;
-$(".level").click(function(){
+$(".level:not(.lock)").click(function(){
 	debugger;
 	setGame();
 	levelChosen  =parseInt(this.id[this.id.length-1]);
