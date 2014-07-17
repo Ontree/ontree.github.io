@@ -764,6 +764,13 @@ $(".level:not(.lock)").click(function(){
 	setGame();
 	levelChosen  =parseInt(this.id[this.id.length-1]);
 	$('#level').css("display", "none");
+	$.playground().startGame(function(){
+    	toStartGame(levelChosen);
+       // $("#welcomeScreen").fadeTo(1000,0,function(){
+       // 	$(this).remove();
+        //});
+        GAMESRART =1;
+    });
 	$('#playscreen').css("background","red");
 })
 
