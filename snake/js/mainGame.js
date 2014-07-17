@@ -312,9 +312,11 @@ function ball(node,s){
       				for (var i =0 ;i < cod.length; i++){
       					cod[i].playerBody.toWhiteColor(this.target.color);
       				}
-      				if ($('#food')[0].color == this.target.color){
-      					$('#food').remove();
-      					theFood.addFood();
+      				if ($('#food').length > 0){
+      					if ($('#food')[0].color == this.target.color){
+      						$('#food').remove();
+      						theFood.addFood();
+      					}
       				}
       			}
       			var name1 = this.id;
