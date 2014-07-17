@@ -1,3 +1,11 @@
+//loading
+windowOnload =function(){
+	$('#container').fadeIn(1000);
+	$('#loading').fadeOut(1000);
+}
+window.onload=windowOnload();
+
+
 //游戏起始页面切换之进入游戏和帮助
 //帮助界面
 $('#choice2').click(function() {

@@ -5,6 +5,11 @@
 	font-family: Microsoft Yahei;
 }
 
+#loading{
+	position:fixed;
+	left:45%;
+	top:40%;
+}
 #container {
 	z-index: 1;
 	width: 100%;
