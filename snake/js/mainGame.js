@@ -764,7 +764,7 @@ $(".level:not(.lock)").click(function(){
 	setGame();
 	levelChosen  =parseInt(this.id[this.id.length-1]);
 	$('#level').css("display", "none");
-    
+    $('playscreen').css("background","red");
 })
 
 //normal
