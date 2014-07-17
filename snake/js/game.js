@@ -85,6 +85,14 @@ $('.reply1').mouseout(function() {
 	}
 });
 
+$('#final').mouseover(function() {
+	$($('#final')[0].firstChild).attr('src', 'image/quit1.png');
+});
+$('#final').mouseout(function() {
+	$($('#final')[0].firstChild).attr('src', 'image/quit2.png');
+});
+
+
 $('.playaction').click(function() {
 	var act = $(this.firstChild).attr('src');
 	if (act == 'image/pause2.png'){
@@ -145,6 +153,11 @@ $($('.reply1')[4]).click(function() {
 	$('#mode').css('display', 'none');
 	$('#playground1').fadeIn('slow');
 	$('#win').css('display', 'none');
+});
+$('#final').click(function() {
+	$('#mode').css('display', 'none');
+	$('#playground1').fadeIn('slow');
+	$('#finalwin').css('display', 'none');
 });
 
 //retry

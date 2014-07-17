@@ -239,7 +239,7 @@
 }
 
 /*弹出通知界面*/
-#messagebox, #lose, #win {
+#messagebox, #lose, #win , #finalwin{
 	background-image: url('image/optionbg1.png');
 	height: 40%;
 	width: 50%;
@@ -254,7 +254,7 @@
 	text-align: center;
 }
 
-.reply {
+.reply, #final {
 	text-align: center;
 	margin-top: 20px;
 }
