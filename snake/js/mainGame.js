@@ -627,6 +627,17 @@ $(document).keydown(function(e){
 });
 
 
+//cookie
+var strCookie=document.cookie; 
+var arr=strCookie.split("="); 
+if(arr.length>1){
+	playerLevel = parseInt(arr[1]);
+}
+for (var i = playerLevel+1; i <=6; i++ ){
+	$('#level_'+i).removeClass('level').addClass("lock");
+}
+
+
 var theWall, thePlayer, theTargets, theFood, theBalls;
 function setGame(){ 
 	music_click = 0;
@@ -835,12 +846,3 @@ $($('.reply1')[5]).click(function(){//next
     }
 });
 
-//cookie
-var strCookie=document.cookie; 
-var arr=strCookie.split("="); 
-if(arr.length>1){
-	playerLevel = parseInt(arr[1]);
-}
-for (var i = playerLevel+1; i <=6; i++ ){
-	$('#level_'+i).removeClass('level').addClass("lock");
-}
