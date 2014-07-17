@@ -771,7 +771,7 @@ $(".level:not(.lock)").click(function(){
         //});
         GAMESRART =1;
     });
-	$('#playscreen').css("background","red");
+	
 })
 
 //normal
