@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="./js/jquery-ui.js"></script>
+		<script type="text/javascript" src="./js/GameOfLife.js"></script>
+		<script type="text/javascript" src="./js/GameOfLifeDraw.js"></script>
+		<script type="text/javascript" src="./js/GameOfLifeController.js"></script>
+		<link rel="stylesheet" type="text/css" href="./css/GameOfLife.css" />
+		<link rel="stylesheet" type="text/css" href="./css/jquery-ui.css" />
+	</head>
+	<body>
+	<div class = "page">
+		<div class = "menu">
+			<button id = "start">Start</button>
+			<button id = "random">Random</button>
+			<!--<button id = "more">More</button>
+			<button id = "less">Less</button>
+			<button id = "accelerate">Accelerate</button>
+			<button id = "decelerate">Decelerate</button>-->
+			<button id = "clear">Clear</button>
+			<div class = "status">
+				<p id = "message">Game Paused</p>
+				<div id = "periodSlider"></div>
+				<p id = "period"></p>
+				<div id = "sizeSlider"></div>
+				<p id = "size"></p>
+				<p id = "coor"></p>
+			</div>
+		</div>
+		<div class = "main">
+			<canvas id = "grid"></canvas>
+		</div>
+	</div>
+	</body>
+</html>
