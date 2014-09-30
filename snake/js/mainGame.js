@@ -13,9 +13,6 @@ var targetTotal = 0, targetOrigin;
 //游戏背景画面
 var background1 = new $.gameQuery.Animation({imageURL: "image/space.jpg"});
 
-
-
-
 //玩家对象
 var playerAni=['blue', 'white', 'green','yellow'];
 playerAni['green'] = new $.gameQuery.Animation({imageURL: "image/greenBody.png"});
